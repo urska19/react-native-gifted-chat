@@ -16,6 +16,7 @@ import Actions from './Actions';
 import Avatar from './Avatar';
 import Bubble from './Bubble';
 import MessageImage from './MessageImage';
+import MessageTitle from './MessageTitle';
 import MessageText from './MessageText';
 import Composer from './Composer';
 import Day from './Day';
@@ -532,6 +533,7 @@ GiftedChat.defaultProps = {
   renderMessage: null,
   renderMessageText: null,
   renderMessageImage: null,
+  renderMessageTitle: null,
   imageProps: {},
   lightboxProps: {},
   renderCustomView: null,
@@ -582,6 +584,7 @@ GiftedChat.propTypes = {
   renderMessage: PropTypes.func,
   renderMessageText: PropTypes.func,
   renderMessageImage: PropTypes.func,
+  renderMessageTitle: PropTypes.func,
   imageProps: PropTypes.object,
   lightboxProps: PropTypes.object,
   renderCustomView: PropTypes.func,
@@ -610,6 +613,7 @@ export {
   Avatar,
   Bubble,
   MessageImage,
+  MessageTitle,
   MessageText,
   Composer,
   Day,

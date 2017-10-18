@@ -12,6 +12,7 @@ import {
 import MessageText from './MessageText';
 import MessageImage from './MessageImage';
 import Time from './Time';
+import MessageTitle from './MessageTitle';
 
 import { isSameUser, isSameDay, warnDeprecated } from './utils';
 
@@ -42,6 +43,17 @@ export default class Bubble extends React.Component {
         return this.props.renderMessageText(messageTextProps);
       }
       return <MessageText {...messageTextProps}/>;
+    }
+    return null;
+  }
+
+  renderMessageTitle() {
+    if (this.props.currentMessage.title) {
+      const {containerStyle, wrapperStyle, ...messageTitleProps} = this.props;
+      if (this.props.renderMessageTitle) {
+        return this.props.renderMessageTitle(messageTitleProps);
+      }
+      return <MessageTitle {...messageTitleProps}/>;
     }
     return null;
   }
@@ -130,6 +142,7 @@ export default class Bubble extends React.Component {
             <View>
               {this.renderCustomView()}
               {this.renderMessageImage()}
+              {this.renderMessageTitle()}
               {this.renderMessageText()}
               <View style={[styles.bottom, this.props.bottomContainerStyle[this.props.position]]}>
                 {this.renderTime()}
@@ -205,6 +218,7 @@ Bubble.defaultProps = {
   touchableProps: {},
   onLongPress: null,
   renderMessageImage: null,
+  renderMessageTitle: null,
   renderMessageText: null,
   renderCustomView: null,
   renderTime: null,
@@ -213,6 +227,7 @@ Bubble.defaultProps = {
     text: null,
     createdAt: null,
     image: null,
+    title: null
   },
   nextMessage: {},
   previousMessage: {},
@@ -231,6 +246,7 @@ Bubble.propTypes = {
   touchableProps: PropTypes.object,
   onLongPress: PropTypes.func,
   renderMessageImage: PropTypes.func,
+  renderMessageTitle: PropTypes.func,
   renderMessageText: PropTypes.func,
   renderCustomView: PropTypes.func,
   renderTime: PropTypes.func,
